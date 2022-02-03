@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import {Responsive} from '@instructure/ui-responsive'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Responsive
+        match="media"
+        query={{
+          mobile: {maxWidth: '767px'},
+          tablet: {minWidth: '768px'},
+          desktop: {minWidth: '1024px'}
+        }}
+        props={{
+          mobile: {
+            info: 'Mobile'
+          },
+          tablet: {
+            info: 'Tablet'
+          },
+          desktop: {
+            info: 'Desktop'
+          }
+        }}
+        render={props => <div>Hello World {props.info}</div>}
+      />
     </div>
   );
 }
